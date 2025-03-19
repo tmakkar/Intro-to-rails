@@ -1,0 +1,18 @@
+<%= form_with url: books_path, method: :get, class: 'search-form' do %>
+  <div class="search-container">
+    <%= text_field_tag :search, params[:search], placeholder: "Search books..." %>
+    <%= submit_tag "Search", class: "btn btn-primary" %>
+  </div>
+<% end %>
+
+<%= @books.each do |book| %>
+  <div class="book">
+    <h3><%= book.title %></h3>
+    <p><%= book.category %></p>
+    <p><%= book.price %></p>
+  </div>
+<% end %>
+
+<div class="pagination">
+  <%= paginate @books %>
+</div>

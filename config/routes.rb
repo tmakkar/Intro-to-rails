@@ -1,5 +1,13 @@
 Rails.application.routes.draw do
+  get "books/index"
+  get "books/show"
+  get "pages/about"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+  get 'home', to: 'pages#home'
+  get 'about', to: 'pages#about'
+  get 'data', to: 'pages#data' # For your data page
+
+  resources :books, only: [:index, :show]
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
   # Can be used by load balancers and uptime monitors to verify that the app is live.
